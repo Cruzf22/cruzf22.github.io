@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lautaro Ibarra Portfolio</title>
+<meta name="description" content="Lautaro Ibarra — Desarrollador Web, Diseñador UX/UI y Marketing Digital en Rosario, Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Mundo único: negro. Layout: índice tipográfico de sitios, ancho completo, filas que se invierten al pasar. */
+  --ink:#0b0b0b;
+  --ink-2:#141414;
+  --line:#262626;
+  --paper:#f2f0eb;
+  --mute:#8a8780;
+  --signal:#ff5a36;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gut:clamp(16px,4vw,56px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--display);font-stretch:100%;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+::selection{background:var(--paper);color:var(--ink)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.wrap{padding:0 var(--gut)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px var(--gut);background:rgba(11,11,11,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .brand{font-weight:800;font-stretch:125%;letter-spacing:-.01em;text-decoration:none;font-size:15px}
+nav ul{display:flex;gap:clamp(14px,3vw,32px);list-style:none}
+nav ul a{text-decoration:none;color:var(--mute);transition:color .2s}
+nav ul a:hover{color:var(--paper)}
+.status{display:flex;align-items:center;gap:8px;color:var(--mute)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(255,90,54,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,54,.55)}70%{box-shadow:0 0 0 9px rgba(255,90,54,0)}100%{box-shadow:0 0 0 0 rgba(255,90,54,0)}}
+
+/* HERO */
+.hero{padding:clamp(48px,9vw,120px) var(--gut) clamp(40px,6vw,72px);display:grid;gap:clamp(28px,4vw,48px)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--mute)}
+.hero h1{font-weight:900;font-stretch:125%;font-size:clamp(52px,12.5vw,200px);line-height:.84;letter-spacing:-.045em;text-wrap:balance}
+.hero h1 .thin{font-weight:200;font-stretch:62%;letter-spacing:-.02em;display:block}
+.urlbar{display:flex;align-items:center;gap:14px;max-width:760px;border:1px solid var(--line);border-radius:999px;padding:14px 22px;background:var(--ink-2)}
+.urlbar .lights{display:flex;gap:6px;flex:none}
+.urlbar .lights i{width:9px;height:9px;border-radius:50%;background:#2e2e2e;display:block}
+.urlbar .addr{font-family:var(--mono);font-size:clamp(14px,1.8vw,18px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.urlbar .addr .proto{color:var(--mute)}
+.caret{display:inline-block;width:.55em;height:1.1em;background:var(--signal);vertical-align:-.18em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.urlbar .role{flex:none;color:var(--mute)}
+.lede{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px 64px;align-items:end}
+.lede p{max-width:58ch;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:#d9d6cf}
+.stats{display:flex;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
+.stat b{display:block;font-weight:800;font-stretch:125%;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{color:var(--mute)}
+
+/* SECTION HEAD */
+section{border-top:1px solid var(--line)}
+.shead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px;padding:28px var(--gut) 20px}
+.shead h2{font-weight:800;font-stretch:125%;font-size:clamp(28px,4vw,48px);letter-spacing:-.03em;line-height:1}
+.shead .mono{color:var(--mute)}
+
+/* FILTERS */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--paper);border-color:var(--mute)}
+.filters button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.filters sup{font-size:10px;margin-left:4px;opacity:.7}
+
+/* INDEX */
+.index{list-style:none;border-top:1px solid var(--line)}
+.index li{border-bottom:1px solid var(--line)}
+.index li[hidden]{display:none}
+.row{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr) 220px 200px 40px;align-items:center;gap:16px;padding:20px var(--gut);text-decoration:none;overflow:hidden;isolation:isolate}
+.row::before{content:"";position:absolute;inset:0;background:var(--paper);transform:scaleY(0);transform-origin:bottom;transition:transform .38s cubic-bezier(.7,0,.2,1);z-index:-1}
+.row:hover::before,.row:focus-visible::before{transform:scaleY(1)}
+.row:hover,.row:focus-visible{color:var(--ink)}
+.row:focus-visible{outline:none}
+.row .n{font-family:var(--mono);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;transition:color .3s}
+.row .site{font-weight:700;font-stretch:112%;font-size:clamp(22px,3.4vw,46px);line-height:1.05;letter-spacing:-.03em;overflow-wrap:anywhere;transition:transform .45s cubic-bezier(.7,0,.2,1),font-stretch .45s}
+.row .site small{font-weight:300;font-stretch:80%;color:var(--mute);transition:color .3s}
+.row:hover .site,.row:focus-visible .site{transform:translateX(14px);font-stretch:125%}
+.row .roles{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:6px 9px;opacity:.75}
+.row .for{font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.04em;transition:color .3s}
+.row:hover .n,.row:hover .for,.row:hover .site small,.row:focus-visible .n,.row:focus-visible .for,.row:focus-visible .site small{color:#5a5852}
+.arrow{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);transition:all .35s}
+.arrow svg{width:16px;height:16px;transition:transform .35s}
+.row:hover .arrow,.row:focus-visible .arrow{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.row:hover .arrow svg,.row:focus-visible .arrow svg{transform:rotate(45deg)}
+
+/* EXPERIENCE */
+.xp{display:grid}
+.job{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1.2fr);gap:16px 40px;padding:28px var(--gut);border-top:1px solid var(--line)}
+.job:first-child{border-top:none}
+.job .when{font-family:var(--mono);font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.job .when .now{color:var(--signal)}
+.job h3{font-weight:700;font-stretch:110%;font-size:clamp(20px,2vw,26px);line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+.job h3 + p{color:var(--mute);margin-top:6px;font-size:15px}
+.job ul{list-style:none;display:grid;gap:8px;color:#cfccc5;font-size:16px}
+.job li{padding-left:22px;position:relative}
+.job li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1px;background:var(--mute)}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:1px solid var(--line)}
+.skill{padding:28px var(--gut);border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:14px;align-content:start}
+.skill .mono{color:var(--mute)}
+.skill p{font-weight:600;font-stretch:105%;font-size:20px;line-height:1.35;letter-spacing:-.01em}
+
+/* CONTACT */
+.contact{padding:clamp(56px,9vw,120px) var(--gut) 40px;display:grid;gap:40px}
+.contact h2{font-weight:900;font-stretch:125%;font-size:clamp(44px,9vw,140px);line-height:.88;letter-spacing:-.045em;text-wrap:balance}
+.contact h2 em{font-style:normal;font-weight:200;font-stretch:62%}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.link{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 22px;border:1px solid var(--line);border-radius:14px;text-decoration:none;transition:border-color .25s,background .25s;background:transparent;color:var(--paper);font:inherit;text-align:left;cursor:pointer;width:100%}
+.link:hover{border-color:var(--paper);background:var(--ink-2)}
+.link .k{display:block;color:var(--mute);margin-bottom:6px}
+.link .v{font-weight:600;font-size:17px;overflow-wrap:anywhere}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:24px var(--gut);border-top:1px solid var(--line);color:var(--mute)}
+
+/* Load sequence: from a visible resting state */
+.rise{animation:rise .9s cubic-bezier(.2,.7,.1,1) both}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}
+@keyframes rise{from{transform:translateY(18px);opacity:.15}to{transform:none;opacity:1}}
+
+@media (max-width:900px){
+  .row{grid-template-columns:40px minmax(0,1fr) 40px;row-gap:10px}
+  .row .roles,.row .for{grid-column:2}
+  .row .arrow{grid-row:1;grid-column:3}
+  .job{grid-template-columns:1fr}
+  nav ul{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Principal">
+  <a class="brand" href="#top">L/IBARRA</a>
+  <ul class="mono">
+    <li><a href="#trabajos">Trabajos</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <span class="status mono"><span class="dot" aria-hidden="true"></span>Rosario, AR</span>
+</nav>
+
+<header class="hero" id="top">
+  <div class="meta mono rise">
+    <span>Desarrollador Web</span><span>Diseñador UX/UI</span><span>Marketing Digital</span>
+  </div>
+  <h1 class="rise d1"><span class="thin">Lautaro</span>Ibarra</h1>
+  <div class="urlbar rise d2" aria-label="Sitios diseñados y desarrollados">
+    <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="addr"><span class="proto">https://</span><span id="typed">neuralsoft.com</span><span class="caret" aria-hidden="true"></span></span>
+    <span class="role mono" id="typedRole">Diseño + Desarrollo</span>
+  </div>
+  <div class="lede rise d3">
+    <p>Diseño y desarrollo sitios web que conectan marcas con personas. Uno la mirada de UX/UI con la estrategia de performance: interfaces claras, construidas en WordPress, Tiendanube y HTML/CSS, y pensadas para medir resultados.</p>
+    <div class="stats">
+      <div class="stat"><b id="statSites">16</b><span class="mono">Sitios publicados</span></div>
+      <div class="stat"><b>10</b><span class="mono">Años en digital</span></div>
+      <div class="stat"><b>3</b><span class="mono">Agencias aliadas</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="trabajos" aria-labelledby="h-trabajos">
+  <div class="shead">
+    <h2 id="h-trabajos">Trabajos</h2>
+    <div class="filters" role="group" aria-label="Filtrar por rol">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">Todos<sup></sup></button>
+      <button type="button" id="f-dis" data-f="Diseño" aria-pressed="false">Diseño<sup></sup></button>
+      <button type="button" id="f-dev" data-f="Desarrollo" aria-pressed="false">Desarrollo<sup></sup></button>
+      <button type="button" id="f-man" data-f="Mantenimiento" aria-pressed="false">Mantenimiento<sup></sup></button>
+    </div>
+  </div>
+  <ol class="index" id="index"></ol>
+</section>
+
+<section id="experiencia" aria-labelledby="h-xp">
+  <div class="shead">
+    <h2 id="h-xp">Experiencia</h2>
+    <span class="mono">2016 — Hoy</span>
+  </div>
+  <div class="xp">
+    <article class="job">
+      <div class="when">2023 — <span class="now">Actualidad</span></div>
+      <div><h3>Diseñador Web y Marketing</h3><p>NeuralSoft · Rosario</p></div>
+      <ul>
+        <li>Diseño UX/UI y desarrollo de sitios y landing pages en WordPress y HTML/CSS.</li>
+        <li>Gestión y optimización de campañas de performance en Google Ads y Google Analytics.</li>
+        <li>Diseño gráfico para redes, eventos, web y comunicación interna.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <div class="when">2023 — <span class="now">Actualidad</span></div>
+      <div><h3>Diseñador Web Freelance</h3><p>Was Media · Akira Web &amp; Marketing · Square Media Social</p></div>
+      <ul>
+        <li>Diseño UX/UI y desarrollo front y back de sitios web y landing pages.</li>
+        <li>Proyectos propios para clientes directos, con mantenimiento y seguridad.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <div class="when">2020 — 2023</div>
+      <div><h3>Diseñador Web y Marketing</h3><p>Terragene · Uovo · Protergium · Alvear</p></div>
+      <ul>
+        <li>Diseño UX/UI y desarrollo de aplicaciones web en WordPress y HTML/CSS.</li>
+        <li>Diseño de interfaces para aplicaciones móviles.</li>
+        <li>Material gráfico para redes, web y comunicaciones internas.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <div class="when">2020 — 2023</div>
+      <div><h3>Gestor E-commerce</h3><p>Distribuidora Arbell · Freelance</p></div>
+      <ul>
+        <li>Control de publicaciones en Mercado Libre.</li>
+        <li>Fotografía y edición de productos.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <div class="when">2016 — 2020</div>
+      <div><h3>Encargado de E-commerce y Marketing Digital</h3><p>EPSA Moto · Villa Gobernador Gálvez</p></div>
+      <ul>
+        <li>Gestión integral del área de e-commerce y marketing.</li>
+        <li>Supervisión y capacitación del equipo de callcenter y ventas, con reportes.</li>
+        <li>Gestión de puntos de venta en Mercado Libre, Garbarino y Linio.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="h-skills">
+  <div class="shead">
+    <h2 id="h-skills">Herramientas</h2>
+    <span class="mono">Stack de trabajo</span>
+  </div>
+  <div class="skills">
+    <div class="skill"><span class="mono">01 — Diseño UX/UI</span><p>Figma, Adobe XD, Photoshop, Illustrator</p></div>
+    <div class="skill"><span class="mono">02 — Frontend</span><p>HTML5, CSS3, desarrollo a medida</p></div>
+    <div class="skill"><span class="mono">03 — CMS y E-commerce</span><p>WordPress, WooCommerce, Tiendanube, PrestaShop, Mercado Libre</p></div>
+    <div class="skill"><span class="mono">04 — Marketing</span><p>Google Ads, Google Analytics, campañas de performance</p></div>
+  </div>
+</section>
+
+<section id="contacto" aria-labelledby="h-contact">
+  <div class="contact">
+    <h2 id="h-contact">Hagamos algo <em>que funcione.</em></h2>
+    <div class="links">
+      <button class="link" type="button" id="copyMail" aria-describedby="copyMsg">
+        <span><span class="k mono" id="copyMsg">Email · copiar</span><span class="v">lautarocruz22@gmail.com</span></span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg></span>
+      </button>
+      <a class="link" href="https://wa.me/5493413137283" target="_blank" rel="noopener">
+        <span><span class="k mono">WhatsApp</span><span class="v">+54 341 313 7283</span></span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></span>
+      </a>
+      <a class="link" href="https://www.linkedin.com/in/lautaro-ibarra/" target="_blank" rel="noopener">
+        <span><span class="k mono">LinkedIn</span><span class="v">in/lautaro-ibarra</span></span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></span>
+      </a>
+    </div>
+  </div>
+  <footer class="mono"><span>Lautaro Ibarra © 2026</span><span>Rosario, Santa Fe, Argentina</span></footer>
+</section>
+
+<script>
+const projects = [
+  ["moraibarra.com","https://moraibarra.com/",["Diseño","Desarrollo"],"Cliente directo"],
+  ["wasmedia.com.ar","https://wasmedia.com.ar/",["Diseño","Desarrollo"],"Was Media"],
+  ["fastprg.com","https://www.fastprg.com/",["Diseño","Desarrollo"],"NeuralSoft"],
+  ["kelnetcomputer.com","https://kelnetcomputer.com/",["Diseño","Desarrollo"],"Cliente directo"],
+  ["voleyrosario.org.ar","https://voleyrosario.org.ar/",["Desarrollo"],"Akira Web & Marketing"],
+  ["neuralsoft.com","https://www.neuralsoft.com/",["Diseño","Desarrollo"],"NeuralSoft"],
+  ["ink-cover.com","https://www.ink-cover.com/",["Diseño"],"Cliente directo"],
+  ["generadoresrental.com.ar","https://generadoresrental.com.ar/",["Diseño","Desarrollo"],"Cliente directo"],
+  ["bigpoint.com.ar","https://bigpoint.com.ar/",["Desarrollo","Mantenimiento"],"Was Media"],
+  ["almacenpompeo.com.ar","https://almacenpompeo.com.ar/",["Desarrollo"],"Was Media"],
+  ["estudio-integral.com.ar","https://estudio-integral.com.ar/",["Diseño","Desarrollo"],"Was Media"],
+  ["gabesa.com.ar","https://gabesa.com.ar/",["Diseño","Desarrollo"],"Was Media"],
+  ["wolko.com.ar","https://wolko.com.ar/",["Diseño","Desarrollo"],"Was Media"],
+  ["oleohidraulicanino.com","https://oleohidraulicanino.com/",["Diseño","Desarrollo"],"Cliente directo"],
+  ["estudiosilvinaandres.com.ar","https://estudiosilvinaandres.com.ar/",["Diseño","Desarrollo"],"Cliente directo"],
+  ["farmaciameba.com.ar","https://farmaciameba.com.ar/",["Diseño","Desarrollo"],"Cliente directo"]
+];
+
+const list = document.getElementById("index");
+const arrow = '<span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5 4h7v7"/></svg></span>';
+list.innerHTML = projects.map(([d,u,r,f],i)=>{
+  const dot = d.indexOf(".");
+  return `<li data-roles="${r.join(" ")}"><a class="row" href="${u}" target="_blank" rel="noopener">
+    <span class="n">${String(i+1).padStart(2,"0")}</span>
+    <span class="site">${d.slice(0,dot)}<small>${d.slice(dot)}</small></span>
+    <span class="roles">${r.map(x=>`<span class="chip">${x}</span>`).join("")}</span>
+    <span class="for">${f}</span>${arrow}</a></li>`;
+}).join("");
+document.getElementById("statSites").textContent = projects.length;
+
+/* filtros */
+const btns = document.querySelectorAll(".filters button");
+btns.forEach(b=>{
+  const f=b.dataset.f;
+  b.querySelector("sup").textContent = f==="all"?projects.length:projects.filter(p=>p[2].includes(f)).length;
+  b.addEventListener("click",()=>{
+    btns.forEach(x=>x.setAttribute("aria-pressed",x===b));
+    list.querySelectorAll("li").forEach(li=>{li.hidden = f!=="all" && !li.dataset.roles.includes(f);});
+  });
+});
+
+/* barra de direcciones que escribe los dominios */
+const typed=document.getElementById("typed"), typedRole=document.getElementById("typedRole");
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce){
+  let i=5;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  (async function loop(){
+    await sleep(2200);
+    while(true){
+      let s=typed.textContent;
+      while(s.length){s=s.slice(0,-1);typed.textContent=s;await sleep(28);}
+      i=(i+1)%projects.length;
+      const [d,,r]=projects[i];
+      typedRole.textContent=r.join(" + ");
+      for(const ch of d){typed.textContent+=ch;await sleep(55+Math.random()*50);}
+      await sleep(2000);
+    }
+  })();
+}
+
+/* copiar email */
+const cm=document.getElementById("copyMail"), msg=document.getElementById("copyMsg");
+cm.addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText("lautarocruz22@gmail.com");msg.textContent="Email · copiado ✓";}
+  catch(e){msg.textContent="Email · seleccioná y copiá";}
+  setTimeout(()=>msg.textContent="Email · copiar",2400);
+});
+</script>
+</body>
+</html>
